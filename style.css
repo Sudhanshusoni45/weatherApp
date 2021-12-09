@@ -79,6 +79,15 @@ input:focus {
   outline: none;
 }
 
+#coffee {
+  margin: 0;
+  margin-top: 1rem;
+  padding: 0;
+  font-size: smaller;
+  text-align: center;
+  /* border: solid 3px red; */
+}
+
 #footer {
   color: #ffffff;
   /* border: solid red 5px; */

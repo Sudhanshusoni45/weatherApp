@@ -12,7 +12,7 @@ let weather = {
 document.getElementById("body").onload = defaultCity();
 
 function defaultCity() {
-  cityName = `bhilai`;
+  cityName = `mumbai`;
   fetchWeather();
 }
 
@@ -27,7 +27,6 @@ function fetchWeather() {
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       weatherData = data;
 
       if (data.cod == 404 || data.cod == 400) {
@@ -56,6 +55,18 @@ function displayWeather() {
   document.querySelector("#description").innerText = `${description}`;
 
   document.querySelector("#description").style.color = `#ffffff`;
+
+  if (
+    name == "Bhilai" ||
+    name == "Rajnandgaon" ||
+    name == "Raipur" ||
+    name == "Durg"
+  ) {
+    document.querySelector(
+      "#coffee"
+    ).innerText = ` Hey there if you are from ${name} we can Grab some Coffee Sometime.
+    I would love to meet you`;
+  }
 }
 
 function errorHandler() {
