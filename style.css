@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-  border: red solid 3px;
+  /* border: red solid 3px; */
   height: 91vh;
   margin: 0 auto;
   display: flex;
@@ -81,7 +81,7 @@ input:focus {
 
 #footer {
   color: #ffffff;
-  border: solid red 5px;
+  /* border: solid red 5px; */
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
@@ -90,16 +90,22 @@ input:focus {
 }
 
 #footer img {
-  width: 40px;
+  width: 43px;
   padding: 0 0rem;
 }
 
 .socials {
   display: flex;
   /* padding: 0 1rem; */
-  border: green solid 2px;
+  /* border: green solid 2px; */
   margin: 0 2rem;
 }
 .socials h3 {
   margin: 0.6rem 0 0 0.2rem;
+}
+
+.socials a {
+  margin: 0;
+  padding: 0;
+  /* border: dotted 3px red; */
 }
