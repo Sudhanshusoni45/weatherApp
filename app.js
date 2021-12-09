@@ -9,12 +9,19 @@ let weather = {
   apiKey: "c966d7987df25388c1c4d2fac2ce0ee4",
 };
 
-function clickHandler() {
-  cityName = input.value;
-  fetchWeather(cityName);
+document.getElementById("body").onload = defaultCity();
+
+function defaultCity() {
+  cityName = `bhilai`;
+  fetchWeather();
 }
 
-function fetchWeather(cityName) {
+function clickHandler() {
+  cityName = input.value;
+  fetchWeather();
+}
+
+function fetchWeather() {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${weather.apiKey}`
   )
@@ -23,7 +30,7 @@ function fetchWeather(cityName) {
       console.log(data);
       weatherData = data;
 
-      if (data.cod == 404) {
+      if (data.cod == 404 || data.cod == 400) {
         // console.log(data.message);
         errorHandler();
       } else {

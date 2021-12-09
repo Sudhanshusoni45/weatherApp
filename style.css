@@ -15,8 +15,8 @@ body {
 }
 
 .container {
-  /* border: red solid 3px; */
-  height: 100vh;
+  border: red solid 3px;
+  height: 91vh;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -55,7 +55,7 @@ h2 {
   color: #000000;
   background-color: var(--primaryColor);
   border-radius: 5px;
-  margin: 1.2rem 0 0 0;
+  margin: 2rem 0 0 0;
   padding: 9px;
   border-color: var(--primaryColor);
 }
@@ -69,4 +69,30 @@ input {
   margin: 0.5rem 0 0 0;
   border-radius: 5px;
   padding: 5px;
+  outline: none;
+  border: 0px solid;
+}
+
+input:focus {
+  border: 0px solid;
+  outline: none;
+}
+
+#footer {
+  color: #ffffff;
+  border: solid red 5px;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+
+#footer img {
+  width: 40px;
+}
+
+.socials {
+  display: flex;
+}
+.socials h3 {
+  margin: 0.6rem 0 0 0.2rem;
 }
