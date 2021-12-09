@@ -35,6 +35,9 @@ body {
   border-radius: 15px;
   padding: 4.5rem;
   background-color: var(--surface);
+  /* min-width: 10rem;
+  max-width: 10rem;
+  max-height: 25rem; */
 }
 
 h1,

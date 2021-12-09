@@ -64,7 +64,7 @@ function displayWeather() {
   ) {
     document.querySelector(
       "#coffee"
-    ).innerText = ` Hey there if you are from ${name} we can Grab some Coffee Sometime.
+    ).innerText = ` Hey there if you are from ${name} we can Grab some Coffee Sometime,
     I would love to meet you`;
   }
 }
