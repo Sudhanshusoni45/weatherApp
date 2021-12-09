@@ -1,6 +1,6 @@
 let btn = document.getElementById("btn");
 let input = document.getElementById("input");
-let cityName = "";
+let cityName;
 let weatherData;
 let iconLink = `http://openweathermap.org/img/wn/10d@2x.png`;
 
@@ -22,12 +22,15 @@ function fetchWeather(cityName) {
     .then((data) => {
       console.log(data);
       weatherData = data;
-      displayWeather();
+
       if (data.cod == 404) {
-        console.log(data.message);
+        // console.log(data.message);
+        errorHandler();
+      } else {
+        displayWeather();
       }
     })
-    .catch((e) => console.log("here", e));
+    .catch((e) => console.log("error occured", e));
 }
 
 function displayWeather() {
@@ -44,4 +47,14 @@ function displayWeather() {
   document.querySelector("#currentCity").innerText = `${name}`;
 
   document.querySelector("#description").innerText = `${description}`;
+
+  document.querySelector("#description").style.color = `#ffffff`;
+}
+
+function errorHandler() {
+  let description = document.querySelector("#description");
+
+  description.innerText = `${weatherData.message}`;
+
+  description.style.color = `#cf6679`;
 }
