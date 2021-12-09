@@ -30,6 +30,7 @@ body {
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
+
   color: #ffffff;
   border-radius: 15px;
   padding: 4.5rem;
@@ -82,16 +83,22 @@ input:focus {
   color: #ffffff;
   border: solid red 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-flow: row wrap;
+
+  /* padding: 0 30rem; */
 }
 
 #footer img {
   width: 40px;
+  padding: 0 0rem;
 }
 
 .socials {
   display: flex;
+  /* padding: 0 1rem; */
+  border: green solid 2px;
+  margin: 0 2rem;
 }
 .socials h3 {
   margin: 0.6rem 0 0 0.2rem;
