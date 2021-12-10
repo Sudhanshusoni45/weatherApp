@@ -3,6 +3,7 @@ let input = document.getElementById("input");
 let cityName;
 let weatherData;
 let iconLink = `http://openweathermap.org/img/wn/10d@2x.png`;
+let apiCallLink;
 
 btn.addEventListener("click", clickHandler);
 
@@ -12,32 +13,44 @@ let weather = {
   apiKey: "c966d7987df25388c1c4d2fac2ce0ee4",
 };
 
-// navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
-// function successCallback(position) {
-//   console.log("position:", position);
-// }
+function successCallback(position) {
+  console.log("position:", position);
 
-// function errorCallback(error) {
-//   console.log("error:", error);
-// }
+  let { latitude, longitude } = position.coords;
+
+  apiCallLink = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weather.apiKey}`;
+
+  fetchWeather(apiCallLink);
+}
+
+function errorCallback(error) {
+  console.log("error:", error);
+}
 
 document.getElementById("body").onload = defaultCity();
 
 function defaultCity() {
   cityName = `mumbai`;
-  fetchWeather();
+
+  apiCallLink = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${weather.apiKey}`;
+
+  fetchWeather(apiCallLink);
 }
 
 function clickHandler() {
   cityName = input.value;
-  fetchWeather();
+
+  apiCallLink = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${weather.apiKey}`;
+  console.log("apiCallLink:", apiCallLink);
+
+  fetchWeather(apiCallLink);
 }
 
 function fetchWeather() {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${weather.apiKey}`
-  )
+  console.log(apiCallLink);
+  fetch(apiCallLink)
     .then((res) => res.json())
     .then((data) => {
       weatherData = data;
