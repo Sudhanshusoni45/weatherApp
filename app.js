@@ -5,9 +5,22 @@ let weatherData;
 let iconLink = `http://openweathermap.org/img/wn/10d@2x.png`;
 
 btn.addEventListener("click", clickHandler);
+
+input.addEventListener("keyup", enterListner);
+
 let weather = {
   apiKey: "c966d7987df25388c1c4d2fac2ce0ee4",
 };
+
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+function successCallback(position) {
+  console.log("position:", position);
+}
+
+function errorCallback(error) {
+  console.log("error:", error);
+}
 
 document.getElementById("body").onload = defaultCity();
 
@@ -66,6 +79,8 @@ function displayWeather() {
       "#coffee"
     ).innerText = ` Hey there if you are from ${name} we can Grab some Coffee Sometime,
     I would love to meet you`;
+  } else {
+    document.querySelector("#coffee").innerText = ``;
   }
 }
 
@@ -75,4 +90,10 @@ function errorHandler() {
   description.innerText = `${weatherData.message}`;
 
   description.style.color = `#cf6679`;
+}
+
+function enterListner(event) {
+  if (event.key == `Enter`) {
+    clickHandler();
+  }
 }
