@@ -12,15 +12,15 @@ let weather = {
   apiKey: "c966d7987df25388c1c4d2fac2ce0ee4",
 };
 
-navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+// navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
-function successCallback(position) {
-  console.log("position:", position);
-}
+// function successCallback(position) {
+//   console.log("position:", position);
+// }
 
-function errorCallback(error) {
-  console.log("error:", error);
-}
+// function errorCallback(error) {
+//   console.log("error:", error);
+// }
 
 document.getElementById("body").onload = defaultCity();
 
