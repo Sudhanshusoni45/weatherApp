@@ -1,13 +1,15 @@
 let btn = document.getElementById("btn");
-let input = document.getElementById("input");
+let input = document.getElementById("autocomplete");
 let cityName;
 let weatherData;
 let iconLink = `http://openweathermap.org/img/wn/10d@2x.png`;
 let apiCallLink;
+let mapApiKey = `AIzaSyAAeSk1fK5LRIF6KCWw33M3TitfzAfzQUA`;
 
+//event Listeners
 btn.addEventListener("click", clickHandler);
-
 input.addEventListener("keyup", enterListner);
+input.addEventListener("input", () => fetchCity(input.value));
 
 let weather = {
   apiKey: "c966d7987df25388c1c4d2fac2ce0ee4",
@@ -108,5 +110,65 @@ function errorHandler() {
 function enterListner(event) {
   if (event.key == `Enter`) {
     clickHandler();
+  }
+}
+
+async function fetchCity(searchText) {
+  let cities;
+  await fetch("/data/cities.json")
+    .then((res) => res.json())
+    .then((json) => {
+      cities = json;
+    });
+
+  //get matches to the current text input
+  let matches = cities.filter((cities) => {
+    const regex = new RegExp(`^${searchText}`, "gi");
+
+    return cities.City.match(regex);
+  });
+
+  if (searchText.length === 0) {
+    matches = [];
+  }
+
+  outputSuggestions(matches);
+}
+
+fetchCity();
+
+function outputSuggestions(matches) {
+  const html = matches
+    .map(
+      (match) =>
+        ` <div class="suggestions">
+      <h4>${match.City}</h4>
+      <small>${match.District} </small>
+      </div>`
+    )
+    .join("");
+
+  document.getElementById("outputSuggestions").innerHTML = html;
+  // console.log("html:", html);
+
+  let suggestionsDivs = document.querySelectorAll(".suggestions");
+
+  setSuggestions(suggestionsDivs);
+}
+
+// const width = document.getElementById("mainDiv").getBoundingClientRect();
+// console.log("width:", width);
+
+function setSuggestions(suggestionDivs) {
+  // console.log(suggestionDivs.length);
+
+  for (i = 0; i < suggestionDivs.length - 1; i++) {
+    suggestionDivs[i].addEventListener("click", (e) => {
+      let result = e.currentTarget.innerText;
+      console.log("result:", result);
+      result = result.split("\n");
+      console.log("result:", result);
+      input.value = result[0];
+    });
   }
 }

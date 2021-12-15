@@ -38,6 +38,8 @@ body {
   /* min-width: 10rem;
   max-width: 10rem;
   max-height: 25rem; */
+
+  /* max-height: 490px; */
 }
 
 h1,
@@ -120,4 +122,33 @@ input:focus {
   margin: 0;
   padding: 0;
   /* border: dotted 3px red; */
+}
+
+/* autocomplete part */
+
+#outputSuggestions {
+  max-width: 165px;
+  min-width: 165px;
+  max-height: 300px;
+
+  /* border: solid yellow 3px; */
+  background-color: white;
+  overflow: auto;
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#outputSuggestions h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.suggestions {
+  margin-bottom: 0.1rem;
+  border: solid #a5a5a5 1px;
+  /* border-radius: 5px; */
+
+  background-color: #fff;
+  color: black;
 }
